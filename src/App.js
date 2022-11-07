@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {Component} from "react"
+import './App.css'
+class App extends Component {
+  state = {
+    count: 0
+  };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  onIncrease = () => {
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }))
+  }
+  render() {
+    const {count} = this.state
+    return (
+      <div className="d-flex flex-column justify-content-center align-items-center main-container">
+        <div className="counter-container">
+          <h4>Counter App</h4>
+          <h1>{count}</h1>
+          <button className="btn btn-primary" onClick={this.onIncrease}>Increase</button>
+        </div>
+      </div>
+    )
+  }
 }
-
 export default App;
